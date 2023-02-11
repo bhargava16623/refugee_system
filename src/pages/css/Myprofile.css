@@ -1,0 +1,35 @@
+.body-cont{
+    width: 75rem;
+    margin-left:8rem ;
+}
+
+.rect-container{
+    height: 15rem;
+    width: 75rem;
+    background: rgb(16,60,231);
+    background: linear-gradient(90deg, rgba(16,60,231,1) 0%, rgba(100,233,255,1) 100%);
+    /* margin-left: 8rem; */
+    margin-right: 10rem;
+}
+
+.profile-cont{
+    height: 10rem;
+    width: 10rem;
+    background: rgb(1,114,175);
+    background: radial-gradient(circle, rgba(1,114,175,1) 0%, rgba(116,254,189,1) 100%);
+    margin-left: 6rem;
+    margin-top: -5rem;
+    box-shadow: 10px 10px;
+    border-radius: 5rem;
+}
+
+.table-infos{
+    margin-top: 3rem;
+    background-color: aqua;
+    padding-top: 0.5rem;
+}
+
+.r1{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
