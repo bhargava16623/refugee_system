@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {Card, CardContent, Grid, TextField,Button, Typography} from '@material-ui/core'
 import { UserConsumer } from './RefugeeContext';
 
-
 export const Refugeeform = () => {
     const [inputs, setInputs] = useState({
         firstname:"",
@@ -30,8 +29,9 @@ export const Refugeeform = () => {
         const nationality = inputs.nationality
         const gender = inputs.gender
         this.props.createUser(_userID,fname,lname,mobile,dob,nationality,gender)
-
+        console.log("Form Submitted")
       }
+      
   return (
     <Card style={{maxWidth:450, margin:"60px auto", padding:"20px 5px"}}>
         <CardContent>
@@ -155,6 +155,7 @@ export const Refugeeform = () => {
               </UserConsumer>
                 <p>Last name: {inputs.lastname}</p>
             </div>
+
         </CardContent>
     </Card>
   )

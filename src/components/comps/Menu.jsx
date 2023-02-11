@@ -26,7 +26,7 @@ function Menu() {
             </Nav.Link>
             <Nav.Link>
               {' '}
-             <Link className="text-decoration-none text-white" to="/bank"> 
+             <Link className="text-decoration-none text-white" to="/bank">
                 Bank
              </Link>
             </Nav.Link>

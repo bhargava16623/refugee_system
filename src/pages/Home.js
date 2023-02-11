@@ -1,7 +1,7 @@
-import React from 'react'
+import React,{ Component } from 'react'
 //import { UserProvider } from '../components/comps/RefugeeContext'
 import { Refugeeform } from '../components/comps/Refugeeform'
-import web3 from 'web3';
+import Web3 from 'web3';
 import Refugeeabi from '../abis/Refugee.json';
 
 
@@ -12,6 +12,12 @@ class Home extends Component{
    }
 
    async loadblockchaindatas(){
+    const providerURL = process.env.PROVIDERURL || "http://localhost:8545";
+
+
+    const web3 = new Web3(providerURL)
+
+
     const accounts = await web3.eth.getAccounts()
     this.state({account: accounts[0]})
 
