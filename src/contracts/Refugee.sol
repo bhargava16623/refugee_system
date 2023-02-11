@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
-contract trans {
+contract Refugee {
 
      // Register user
     struct User {
@@ -12,7 +12,7 @@ contract trans {
         string nationality;
         string gender;
     }
-    
+
     // Variables - uint
     uint256 noofUser = 0;
     uint256 k=0;
@@ -90,7 +90,7 @@ contract trans {
         passwordcreditainals[_user_Id] = keccak256(abi.encodePacked(_firstname, dob));
     }
 
-    //update user creditanials of the user 
+    //update user creditanials of the user
     function updateusercreditainals(string memory _user_Id, string memory _username, string memory _password, string memory mobile, string memory dob) public {
         usernamecreditainals[_user_Id] = keccak256(abi.encodePacked(_username, mobile));
         passwordcreditainals[_user_Id] = keccak256(abi.encodePacked(_password, dob));
