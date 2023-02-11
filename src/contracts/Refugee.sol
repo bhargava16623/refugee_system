@@ -112,9 +112,9 @@ contract trans {
         string receiver;
         uint256 amount;
         string message;
-        uint256 datetime;    
+        uint256 datetime;
     }
-    
+
     //storeTranscationDetails => store the details of each transcations 
     function storeTransactionDetails(string memory _userId, string memory _sender, string memory _receiver, string memory _recID, uint256 _amount, string memory _message, uint256 _datetime) public {
         //unique transferid is created using keccak256 hash by passing transcation details and hash is produced as output
@@ -273,12 +273,12 @@ contract trans {
 
         }
 
-        
+
 
         function sendsubsidyfund(uint amt) external payable{
             string memory _user_id = "";
             address payable tempAdd;
-            
+
             for(uint256 j=0;j<k;j++){
                 _user_id = allUserId[j];
                 tempAdd = usersWithAddress[_user_id];
@@ -304,8 +304,8 @@ contract trans {
 //  |  8      |       Refugee subsidy fund   |     Done ✅    |
 //  |  9      |       Circle of Trust        |     pending ❌ |
 //  |  10     |       User Login             |     Done ✅    |
-//  |  11     |       Business Registration  |     pending ❌ |
-//  |  12     |                              |     pending ❌ |
+//  |  11     |     Business Registration    |     pending ❌ |
+//  |  12     |    Government Functionalities|     pending ❌ |
 //  +---------+------------------------------+----------------+
 //
 //

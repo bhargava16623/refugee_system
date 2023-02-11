@@ -6,10 +6,35 @@ import {Home} from '../pages/Home'
 import {Myprofile} from '../pages/Myprofile'
 import Menu from './comps/Menu';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Web3 from 'web3';
+import Refugeeabi from '../abis/trans.json';
 
 
 
 class App extends Component {
+
+  async componentDidMount(){
+    await this.loadWeb3()
+    await this.loadblockchaindata()
+  }
+
+  async loadWeb3(){
+    if(window.etherum){
+      window.web3 = new Web3(window.etherum)
+      await window.etherum.enable()
+    }else if(window.web3){
+      window.web3 = new Web3(window.web3.currentProvider)
+    }else{
+      window.alert('Non etherum browser detected. You should consider trying Metamask.');
+    }
+  }
+
+  async loadblockchaindata(){
+    const web3 = window.web3
+    const accounts = await web3.eth.getAccounts()
+    console.log(accounts)
+    console.log(Refugeeabi.abi)
+  }
   render() {
     return (
       <div>
