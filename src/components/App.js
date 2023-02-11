@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
 import {Bank} from '../pages/Bank'
-import {Home} from '../pages/Home'
 import {Myprofile} from '../pages/Myprofile'
 import Menu from './comps/Menu';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Web3 from 'web3';
 import Refugeeabi from '../abis/Refugee.json';
+import Home from '../pages/Home'
 
 
 
@@ -31,14 +31,31 @@ class App extends Component {
 
   async loadblockchaindata(){
     const web3 = window.web3
+
+    //Used to get Account address
     const accounts = await web3.eth.getAccounts()
     console.log(accounts)
-    const networkId = await web3.eth.getId()
-    console.log(Refugeeabi.abi, Refugeeabi.networks[networkId].address)
-    const abi = Refugeeabi.abi
-    const address = Refugeeabi.networks[5777].address
 
-    const Refugee = web3.eth.Contract(abi,address)
+    //Retrieve Network id from, if network id may change or dynamic.
+    const networkId = await web3.eth.getId()
+
+    //used to retrieve network data
+    const networkData = Refugeeabi.networks[networkId]
+
+    //Store abi data in to abi variable
+    const abi = Refugeeabi.abi
+
+    //store address of the deployed contract.
+    const address = Refugeeabi.networks[networkId].address
+
+    //checking weather the contract is deployed or not.
+    //The networkdata have value only if the smart contract is deployed.
+    if(networkData){
+      const Refugee = web3.eth.Contract(abi,address)
+    }else{
+      window.alert('Refugee contract is not deployed to detected network')
+    }
+
   }
   render() {
     return (

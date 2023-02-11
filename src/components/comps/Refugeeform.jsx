@@ -22,6 +22,15 @@ export const Refugeeform = () => {
       }
       const onhandleSubmit = async(e) =>{
         e.preventDefault();
+        const _userID = "gowtham0210"
+        const fname = inputs.firstname
+        const lname = inputs.lastname
+        const mobile = inputs.mobilenumber
+        const dob = inputs.dob
+        const nationality = inputs.nationality
+        const gender = inputs.gender
+        this.props.createUser(_userID,fname,lname,mobile,dob,nationality,gender)
+
       }
   return (
     <Card style={{maxWidth:450, margin:"60px auto", padding:"20px 5px"}}>
