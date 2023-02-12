@@ -5,58 +5,73 @@ import {Bank} from '../pages/Bank'
 import {Myprofile} from '../pages/Myprofile'
 import Menu from './comps/Menu';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Web3 from 'web3';
-import Refugeeabi from '../abis/Refugee.json';
+//import Web3 from 'web3';
+//import Refugeeabi from '../abis/Refugee.json';
 import Home from '../pages/Home'
 import Weeb3 from './comps/weeb3';
+import { createUser } from './comps/weeb3';
 
-
-
+let userCreated;
 class App extends Component {
 
   async componentDidMount(){
-    await this.loadWeb3()
-    await this.loadblockchaindata()
+   // await this.loadWeb3()
+   // await this.loadblockchaindata()
+    Weeb3()
+    createUser().then(tx=>{
+      console.log(tx)
+      this.state.userCreated = true;
+
+    }).catch(err => {
+      console.log(err);
+  })
   }
 
-  async loadWeb3(){
-    if(window.etherum){
-      window.web3 = new Web3(window.etherum)
-      await window.etherum.enable()
-    }else if(window.web3){
-      window.web3 = new Web3(window.web3.currentProvider)
-    }else{
-      window.alert('Non etherum browser detected. You should consider trying Metamask.');
+  // async loadWeb3(){
+  //   if(window.etherum){
+  //     window.web3 = new Web3(window.etherum)
+  //     await window.etherum.enable()
+  //   }else if(window.web3){
+  //     window.web3 = new Web3(window.web3.currentProvider)
+  //   }else{
+  //     window.alert('Non etherum browser detected. You should consider trying Metamask.');
+  //   }
+  // }
+
+  // async loadblockchaindata(){
+  //   const web3 = window.web3
+
+  //   //Used to get Account address
+  //   const accounts = await web3.eth.getAccounts()
+  //   console.log(accounts)
+
+  //   //Retrieve Network id from, if network id may change or dynamic.
+  //   const networkId = await web3.eth.getId()
+
+  //   //used to retrieve network data
+  //   const networkData = Refugeeabi.networks[networkId]
+
+  //   //Store abi data in to abi variable
+  //   const abi = Refugeeabi.abi
+
+  //   //store address of the deployed contract.
+  //   const address = Refugeeabi.networks[networkId].address
+
+  //   //checking weather the contract is deployed or not.
+  //   //The networkdata have value only if the smart contract is deployed.
+  //   if(networkData){
+  //     const Refugee = web3.eth.Contract(abi,address)
+  //   }else{
+  //     window.alert('Refugee contract is not deployed to detected network')
+  //   }
+
+  // }
+
+  constructor(){
+    super()
+    this.state={
+      userCreated : false
     }
-  }
-
-  async loadblockchaindata(){
-    const web3 = window.web3
-
-    //Used to get Account address
-    const accounts = await web3.eth.getAccounts()
-    console.log(accounts)
-
-    //Retrieve Network id from, if network id may change or dynamic.
-    const networkId = await web3.eth.getId()
-
-    //used to retrieve network data
-    const networkData = Refugeeabi.networks[networkId]
-
-    //Store abi data in to abi variable
-    const abi = Refugeeabi.abi
-
-    //store address of the deployed contract.
-    const address = Refugeeabi.networks[networkId].address
-
-    //checking weather the contract is deployed or not.
-    //The networkdata have value only if the smart contract is deployed.
-    if(networkData){
-      const Refugee = web3.eth.Contract(abi,address)
-    }else{
-      window.alert('Refugee contract is not deployed to detected network')
-    }
-
   }
   render() {
     return (
@@ -69,7 +84,9 @@ class App extends Component {
           <Route path='/Myprofile' element = {<Myprofile />} />
         </Routes>
         </BrowserRouter>
-        <Weeb3 />
+        {!userCreated ? <button onClick={()=>createUser()}>createUser</button>:
+        <p>User is Created</p>}
+        {/* <Weeb3 /> */}
       </div>
     );
   }
