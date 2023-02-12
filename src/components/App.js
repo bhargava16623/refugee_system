@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Web3 from 'web3';
 import Refugeeabi from '../abis/Refugee.json';
 import Home from '../pages/Home'
+import Weeb3 from './comps/weeb3';
 
 
 
@@ -68,6 +69,7 @@ class App extends Component {
           <Route path='/Myprofile' element = {<Myprofile />} />
         </Routes>
         </BrowserRouter>
+        <Weeb3 />
       </div>
     );
   }

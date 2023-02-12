@@ -31,7 +31,7 @@ export const Refugeeform = () => {
         this.props.createUser(_userID,fname,lname,mobile,dob,nationality,gender)
         console.log("Form Submitted")
       }
-      
+
   return (
     <Card style={{maxWidth:450, margin:"60px auto", padding:"20px 5px"}}>
         <CardContent>

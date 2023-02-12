@@ -31,7 +31,9 @@ class Home extends Component{
     if(networkData){
       const Refugee = web3.eth.Contract(abi,address)
       this.setState({Refugee})
+
     }else{
+
       window.alert('Refugee Contract is not deployed');
     }
    }
