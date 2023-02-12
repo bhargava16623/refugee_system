@@ -5,10 +5,13 @@ import Navbar from 'react-bootstrap/Navbar';
 //import Container from 'react-bootstrap/Container';
 import { Link } from 'react-router-dom';
 import  React from 'react';
+
 function Menu() {
+    
+
   return (
     <>
-      <Navbar bg="dark" variant="dark">
+      <Navbar bg="dark" variant="dark" className='bg-black h-20 w-full'>
         <Container>
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
           <Nav className="me-auto">
@@ -24,7 +27,7 @@ function Menu() {
                 Profile
               </Link>
             </Nav.Link>
-            <Nav.Link>
+            <Nav.Link >
               {' '}
              <Link className="text-decoration-none text-white" to="/bank"> 
                 Bank
